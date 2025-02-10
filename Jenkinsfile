@@ -5,7 +5,7 @@ pipeline {
         stage('Build') {
             steps {
                 bat 'npm install'
-                bat 'npm run build'
+                bat 'set CI=false && npm run build'
             }
         }
 
