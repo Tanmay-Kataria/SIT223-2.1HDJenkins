@@ -1,6 +1,0 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
-
-/* Your custom component styles here */
-@import './component-styles.css'; /* This is the custom tailwind styling file */
