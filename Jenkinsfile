@@ -13,7 +13,7 @@ pipeline {
 
         stage('Test') {
             steps {
-bat 'npm test -- --ci --passWithNoTests || exit 0'
+                bat 'npm test -- --ci --passWithNoTests || exit 0'
 
             }
         }
