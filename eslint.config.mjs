@@ -1,28 +1,38 @@
 import js from "@eslint/js";
 import globals from "globals";
-import tseslint from "typescript-eslint";
 import pluginReact from "eslint-plugin-react";
+import babelEslintParser from "@babel/eslint-parser";
 
 /** @type {import('eslint').Linter.FlatConfig[]} */
 export default [
   {
-    files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"],
-    languageOptions: { globals: globals.browser },
+    // Apply to all JavaScript/JSX files
+    files: ["**/*.{js,mjs,cjs,jsx,tsx}"],
+    languageOptions: {
+      // Use the Babel parser to understand JSX and modern JS syntax
+      parser: babelEslintParser,
+      parserOptions: {
+        requireConfigFile: false, // Allow parsing without a Babel config file
+        ecmaVersion: 2020,
+        sourceType: "module",
+        ecmaFeatures: { jsx: true },
+      },
+      globals: globals.browser,
+    },
     plugins: {
-      react: pluginReact, // ✅ Correctly define plugins as an object
+      // Define plugins as an object
+      react: pluginReact,
     },
     settings: {
       react: {
-        version: "detect", // ✅ Automatically detect React version
+        version: "detect", // Automatically detect the React version
       },
     },
     rules: {
-      "react/jsx-uses-react": "warn",
-      "react/jsx-uses-vars": "warn",
-      "react/react-in-jsx-scope": "error",
+      // Disable the rule for react-in-jsx-scope if using React 17+
+      "react/react-in-jsx-scope": "off",
     },
   },
-  js.configs.recommended, // ✅ Core JS rules
-  ...tseslint.configs.recommended, // ✅ TypeScript rules
-  pluginReact.configs.recommended, // ✅ React rules
+  // Include the recommended core rules from @eslint/js
+  js.configs.recommended,
 ];

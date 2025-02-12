@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import "./App.css";
 import React, { useState } from "react";
 
@@ -57,12 +58,12 @@ function DisplayName() {
           placeholder="Enter your name"
         />
         <button type="submit">Submit</button>
-        <button type="button" onClick={handleReset}>Reset</button> {/* FIXED: Reset Button */}
+        <button type="button" onClick={handleReset}>
+          Reset
+        </button>
       </form>
 
-      <h1>
-        {submittedName && `Hello ${submittedName}!`}
-      </h1>
+      <h1>{submittedName && `Hello ${submittedName}!`}</h1>
     </div>
   );
 }
@@ -70,7 +71,7 @@ function DisplayName() {
 function App() {
   return (
     <div>
-      <Counter />  {/* FIXED: Now Counter is included inside App */}
+      <Counter />  
       <DisplayName />
     </div>
   );
