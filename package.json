@@ -41,5 +41,13 @@
     "@testing-library/react": "^16.2.0",
     "babel-jest": "^29.7.0",
     "cross-env": "^7.0.3"
+  },"jest": {
+  "moduleNameMapper": {
+    "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js"
+  },
+  "transform": {
+    "^.+\\.(js|jsx)$": "babel-jest"
   }
+}
+
 }
