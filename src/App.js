@@ -1,6 +1,4 @@
-import logo from "./logo.svg";
 import "./App.css";
-
 import React, { useState } from "react";
 
 function Counter() {
@@ -33,8 +31,8 @@ function Counter() {
 }
 
 function DisplayName() {
-  const  [name, setName]  = useState('');
-  const [submittedName, setSubmittedName]  = useState('');
+  const [name, setName] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
 
   const handleChange = (e) => {
     setName(e.target.value);
@@ -59,18 +57,23 @@ function DisplayName() {
           placeholder="Enter your name"
         />
         <button type="submit">Submit</button>
-        <button type="button">Reset</button>
+        <button type="button" onClick={handleReset}>Reset</button> {/* FIXED: Reset Button */}
       </form>
 
       <h1>
-        {submittedName} . Hello {name}
+        {submittedName && `Hello ${submittedName}!`}
       </h1>
     </div>
   );
 }
 
 function App() {
-  return <DisplayName></DisplayName>;
+  return (
+    <div>
+      <Counter />  {/* FIXED: Now Counter is included inside App */}
+      <DisplayName />
+    </div>
+  );
 }
 
 export default App;
