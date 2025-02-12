@@ -11,7 +11,7 @@ pipeline {
 
         stage('Test') {
             steps {
-                bat 'npx jest --ci --coverage --passWithNoTests --silent'
+                bat 'npm test -- --ci --passWithNoTests --silent'
 
             }
         }
