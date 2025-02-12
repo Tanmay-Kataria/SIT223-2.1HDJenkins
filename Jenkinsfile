@@ -26,7 +26,7 @@ bat 'npm test -- --ci --passWithNoTests || exit 0'
 
         stage('Deploy') {
             steps {
-                bat 'npx netlify deploy --prod'
+        bat 'npx netlify deploy --prod --dir=build'
             }
         }
     }
