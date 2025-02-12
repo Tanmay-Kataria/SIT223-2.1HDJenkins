@@ -40,14 +40,16 @@
     "@testing-library/jest-dom": "^6.6.3",
     "@testing-library/react": "^16.2.0",
     "babel-jest": "^29.7.0",
-    "cross-env": "^7.0.3"
-  },"jest": {
-  "moduleNameMapper": {
-    "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js"
+    "cross-env": "^7.0.3",
+    "jest": "^27.5.1",
+    "jsdom": "^26.0.0"
   },
-  "transform": {
-    "^.+\\.(js|jsx)$": "babel-jest"
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sass)$": "<rootDir>/__mocks__/styleMock.js"
+    },
+    "transform": {
+      "^.+\\.(js|jsx)$": "babel-jest"
+    }
   }
-}
-
 }

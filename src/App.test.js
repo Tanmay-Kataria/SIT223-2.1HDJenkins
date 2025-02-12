@@ -1,20 +1,22 @@
+/**
+ * @jest-environment jsdom
+ */
+
+import React from "react"; // ✅ Add this line
 import { render, screen, fireEvent } from "@testing-library/react";
-import Counter from "./App"; // Import Counter directly
-import DisplayName from "./App"; // Import DisplayName directly
+import Counter from "./App"; 
+import DisplayName from "./App";
 
 // Test for Counter Component
 test("renders Counter component and increments/decrements correctly", () => {
-  render(<Counter />);
+  render(<Counter />); // ✅ Ensure React is imported so JSX works
 
-  // Get buttons
   const incrementButton = screen.getByText(/increment/i);
   const decrementButton = screen.getByText(/decrement/i);
 
-  // Click increment button and check value
   fireEvent.click(incrementButton);
   expect(screen.getByText(/count: 1/i)).toBeInTheDocument();
 
-  // Click decrement button and check value
   fireEvent.click(decrementButton);
   expect(screen.getByText(/count: 0/i)).toBeInTheDocument();
 });
@@ -23,20 +25,16 @@ test("renders Counter component and increments/decrements correctly", () => {
 test("renders DisplayName component and updates input field", () => {
   render(<DisplayName />);
 
-  // Get input and buttons
   const inputField = screen.getByPlaceholderText(/Enter your name/i);
   const submitButton = screen.getByText(/submit/i);
   const resetButton = screen.getByText(/reset/i);
 
-  // Type a name into the input
   fireEvent.change(inputField, { target: { value: "Tanmay" } });
   expect(inputField.value).toBe("Tanmay");
 
-  // Click submit button
   fireEvent.click(submitButton);
   expect(screen.getByText(/hello Tanmay/i)).toBeInTheDocument();
 
-  // Click reset button
   fireEvent.click(resetButton);
   expect(inputField.value).toBe("");
 });
