@@ -7,11 +7,13 @@ import pluginReact from "eslint-plugin-react";
 export default [
   { files: ["**/*.{js,mjs,cjs,ts,jsx,tsx}"] },
   { languageOptions: { globals: globals.browser } },
-  js.configs.recommended, // ✅ Now correctly defined
-  ...tseslint.configs.recommended, // ✅ Spread operator is fine here
-  pluginReact.configs.recommended, // ✅ Correct way to include React rules
+  js.configs.recommended, // ✅ Core JS rules
+  ...tseslint.configs.recommended, // ✅ TypeScript rules
+  pluginReact.configs.recommended, // ✅ React rules
   {
-    plugins: { react: pluginReact },
+    plugins: {
+      react: pluginReact, // ✅ Correctly importing React plugin
+    },
     settings: {
       react: {
         version: "detect", // ✅ Automatically detect React version
