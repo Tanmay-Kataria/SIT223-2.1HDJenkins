@@ -28,7 +28,10 @@ pipeline {
 
         stage('Deploy') {
             steps {
-                bat 'npx netlify deploy --prod --dir=build --site=8785798b-5a67-4470-b5aa-9b4153c30329 --non-interactive'
+                withCredentials([string(credentialsId: 'netlify-auth-token', variable: 'NETLIFY_AUTH_TOKEN')]) {
+                    // Replace YOUR_SITE_ID with your actual Netlify site ID.
+                    bat 'npx netlify deploy --prod --dir=build --site=8785798b-5a67-4470-b5aa-9b4153c30329 --non-interactive'
+                }
             }
         }
     }
