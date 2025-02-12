@@ -1,6 +1,8 @@
 pipeline {
     agent any
-
+    environment{
+        NETLIFY_AUTH_TOKEN = credentials('netlify-auth-token') 
+    }
     stages {
         stage('Build') {
             steps {
@@ -26,7 +28,7 @@ bat 'npm test -- --ci --passWithNoTests || exit 0'
 
         stage('Deploy') {
             steps {
-        bat 'npx netlify deploy --prod --dir=build'
+                bat 'npx netlify deploy --prod --dir=build --site=8785798b-5a67-4470-b5aa-9b4153c30329 --non-interactive'
             }
         }
     }
