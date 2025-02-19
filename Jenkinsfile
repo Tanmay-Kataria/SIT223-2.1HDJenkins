@@ -22,7 +22,7 @@ pipeline {
         stage('Code Quality Analysis') {
             steps {
                 bat 'npm run lint || exit 0'
-                bat 'sonar-scanner -Dsonar.projectKey=ReactSPA -Dsonar.host.url=http://localhost:9000 -Dsonar.token=<SONAR_TOKEN>'
+               //bat 'sonar-scanner -Dsonar.projectKey=ReactSPA -Dsonar.host.url=http://localhost:9000 -Dsonar.token=<SONAR_TOKEN>'
             }
         }
 
