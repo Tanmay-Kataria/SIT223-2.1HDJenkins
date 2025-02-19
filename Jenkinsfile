@@ -46,7 +46,7 @@ pipeline {
                         Console Log: ${env.BUILD_URL}
                     """,
                     to: "tanmay.kataria@hotmail.com",
-                    recipientProviders: "tanmay.kataria@hotmail.com"
+                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
                 )
             }
         }
