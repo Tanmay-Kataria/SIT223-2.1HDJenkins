@@ -45,7 +45,7 @@ pipeline {
                         Build Number: ${env.BUILD_NUMBER}
                         Console Log: ${env.BUILD_URL}
                     """,
-                    to: "tanmay.kataria@hotmail.com",
+                    to: "tanmayabhinav@gmaill.com",
                     recipientProviders: [[$class: 'DevelopersRecipientProvider']]
                 )
             }
