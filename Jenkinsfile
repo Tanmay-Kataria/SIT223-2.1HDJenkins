@@ -35,19 +35,18 @@ pipeline {
         }
         
         stage('Notify') {
-            steps {
-                // Email notification stage using the email-ext plugin.
-                emailext(
-                    subject: "Jenkins Build Notification: ${currentBuild.currentResult}",
-                    body: """\
-                        Build Status: ${currentBuild.currentResult}
-                        Job: ${env.JOB_NAME}
-                        Build Number: ${env.BUILD_NUMBER}
-                        Console Log: ${env.BUILD_URL}
-                    """,
-                    to: "tanmayabhinav@gmail.com",
-                    recipientProviders: [[$class: 'DevelopersRecipientProvider']]
-                )
+            steps {withCredentials([usernamePassword(credentialsId: 'mtp-credentials', usernameVariable: 'SMTP_USER', passwordVariable: 'SMTP_PASS')]) {
+            emailext(
+                subject: "Jenkins Build Notification: ${currentBuild.currentResult}",
+                body: """\
+                    Build Status: ${currentBuild.currentResult}
+                    Job: ${env.JOB_NAME}
+                    Build Number: ${env.BUILD_NUMBER}
+                    Console Log: ${env.BUILD_URL}
+                """,
+                to: "tanmayabhinav@gmail.com"
+            )
+        }
             }
         }
     }
